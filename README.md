@@ -56,5 +56,5 @@ Distributed under the GNU Affero General Public License. See [LICENSE](https://g
 [stars-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
 [issues-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-shield]: https://img.shields.io/badge/license-GNU-green
 [license-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/blob/master/LICENSE
