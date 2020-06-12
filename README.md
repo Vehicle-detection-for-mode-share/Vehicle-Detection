@@ -48,13 +48,13 @@ Distributed under the GNU Affero General Public License. See [LICENSE](https://g
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/badge/contributors-2-blue
 [contributors-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[forks-shield]: https://img.shields.io/badge/forks-0-brightgreen
 [forks-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-shield]: https://img.shields.io/badge/stars-0-yellow
 [stars-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-shield]: https://img.shields.io/badge/issues-0%20open-brightgreen
 [issues-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues
-[license-shield]: https://img.shields.io/badge/license-GNU-green
+[license-shield]: https://img.shields.io/badge/license-AGPL-blue
 [license-url]: https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/blob/master/LICENSE
