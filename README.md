@@ -5,8 +5,10 @@
 [![GNU License][license-shield]][license-url]
 
 [![Contributors](https://img.shields.io/github/contributors/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/contributors)
+[![Forks](https://img.shields.io/github/forks/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/forks)
 [![GitHub Stars](https://img.shields.io/github/stars/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues)
+[![GNU License][license-shield]][license-url]
 
 
 # Vehicle Detection for Google Street View Images: Characterizing Mode Share Using Computer Vision
