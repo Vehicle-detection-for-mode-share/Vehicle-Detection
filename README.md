@@ -18,7 +18,7 @@ So far, this project has potential for the following outputs:
 1. GSV vehicle counts ranking of 73 cities for motorcycling and cycling
 2. Detailed comparison: GSV vehicle counts versus control travel or census data for motorcycling and cycling in a small number of cities
 
-## Getting Started
+## Getting Started :rocket:
 
 Here is a list of the items contained in this repository:
 
@@ -28,14 +28,17 @@ Here is a list of the items contained in this repository:
 
 - **[Mode-Share](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/tree/master/Mode-Share)**: folder containing statistical analyses assessing model's ability to characterize mode share
 
-## Outstanding Issues
+## Outstanding Issues :warning:
 
 :heavy_check_mark: Vehicle Classes: defining main vehicle classes
+
 :heavy_multiplication_x: Radius: current equation might not capture all appropriate neighbourhoods in certain cities, depending on city density
+
 :heavy_multiplication_x: Vehicle Classes: reviewing edge cases to redefine final vehicle classes
+
 :heavy_multiplication_x: Image Overlap: code needs to be written to delete continuous frames to prevent multiple counts of same vehicle
 
-## Contributing
+## Contributing :pencil:
 
 Contributions are what make the open source community a great place to learn, inspire, and create. Any contributions you make are appreciated.
 
@@ -45,11 +48,11 @@ Contributions are what make the open source community a great place to learn, in
 4. Push to the Branch (`git push origin feature/AmazingContribution`)
 5. Open a Pull Request
 
-## Reporting Issues
+## Reporting Issues :open_file_folder:
 
 Does something seem off? Make sure to [report it](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues).
 
-## License
+## License :clipboard:
 
 Distributed under the GNU Affero General Public License. See [LICENSE](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/blob/master/LICENSE) for more information.
 
