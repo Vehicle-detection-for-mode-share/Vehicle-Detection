@@ -49,11 +49,11 @@ Contributions are what make the open source community a great place to learn, in
 4. Push to the Branch (`git push origin feature/AmazingContribution`)
 5. Open a Pull Request
 
-## Reporting Issues :open_file_folder:
+## Reporting Issues :speech_balloon:
 
 Does something seem off? Make sure to [report it](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues).
 
-## License :clipboard:
+## License :open_file_folder:
 
 Distributed under the GNU Affero General Public License. See [LICENSE](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/blob/master/LICENSE) for more information.
 
