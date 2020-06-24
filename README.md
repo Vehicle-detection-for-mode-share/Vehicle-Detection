@@ -1,12 +1,6 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![GNU License][license-shield]][license-url]
-
-[![Contributors](https://img.shields.io/github/contributors/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/contributors)
 [![Forks](https://img.shields.io/github/forks/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/forks)
 [![GitHub Stars](https://img.shields.io/github/stars/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/stargazers)
+[![Contributors](https://img.shields.io/github/contributors/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/contributors)
 [![GitHub Issues](https://img.shields.io/github/issues/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues)
 [![GNU License][license-shield]][license-url]
 
