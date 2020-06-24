@@ -28,6 +28,10 @@ Here is a list of the items contained in this repository:
 
 - **[Mode-Share](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/tree/master/Mode-Share)**: folder containing statistical analyses assessing model's ability to characterize mode share
 
+## Outstanding Issues
+
+:heavy_check_mark: List of issues
+
 ## Contributing
 
 Contributions are what make the open source community a great place to learn, inspire, and create. Any contributions you make are appreciated.
