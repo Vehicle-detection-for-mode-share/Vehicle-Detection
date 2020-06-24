@@ -4,6 +4,7 @@
 [![Issues][issues-shield]][issues-url]
 [![GNU License][license-shield]][license-url]
 
+[![Total downloads](https://img.shields.io/packagist/dt/Vehicle-detection-for-mode-share/Vehicle-Detection.svg?label=Downloads&style=flat-square)](https://packagist.org/packages/Vehicle-detection-for-mode-share/Vehicle-Detection)
 [![GitHub Issues](https://img.shields.io/github/issues/Vehicle-detection-for-mode-share/Vehicle-Detection.svg)](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues)
 
 
