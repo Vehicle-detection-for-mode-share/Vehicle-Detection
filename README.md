@@ -11,7 +11,7 @@ The objectives of this project are two-fold:
 1. Create, train, test and tune a deep learning model to achieve high sensitivity and specificity for counting vehicles in Google Street View images
 2. Use the model to count vehicles across several major cities in the World
 
-## Research Output
+## Research Output :postbox:
 
 So far, this project has potential for the following outputs:
 
@@ -30,7 +30,10 @@ Here is a list of the items contained in this repository:
 
 ## Outstanding Issues
 
-:heavy_check_mark: List of issues
+:heavy_check_mark: Vehicle Classes: defining main vehicle classes
+:heavy_multiplication_x: Radius: current equation might not capture all appropriate neighbourhoods in certain cities, depending on city density
+:heavy_multiplication_x: Vehicle Classes: reviewing edge cases to redefine final vehicle classes
+:heavy_multiplication_x: Image Overlap: code needs to be written to delete continuous frames to prevent multiple counts of same vehicle
 
 ## Contributing
 
