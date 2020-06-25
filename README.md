@@ -29,15 +29,9 @@ Here is a list of the items contained in this repository:
 
 - **[Mode-Share](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/tree/master/Mode-Share)**: folder containing statistical analyses assessing model's ability to characterize mode share
 
-## Outstanding Issues :warning:
+## Project Management :calendar: 
 
-:heavy_check_mark: Vehicle Classes: defining main vehicle classes
-
-:heavy_multiplication_x: Radius: current equation might not capture all appropriate neighbourhoods in certain cities, depending on city density
-
-:heavy_multiplication_x: Vehicle Classes: reviewing edge cases to redefine final vehicle classes
-
-:heavy_multiplication_x: Image Overlap: code needs to be written to delete continuous frames to prevent multiple counts of same vehicle
+:heavy_check_mark: This project uses GitHub issues for project management purposes. All ongoing tasks are kept track of and reviewed on a daily basis to ensure timely delivery of project milestones.
 
 ## Contributing :pencil:
 
@@ -49,9 +43,13 @@ Contributions are what make the open source community a great place to learn, in
 4. Push to the Branch (`git push origin feature/AmazingContribution`)
 5. Open a Pull Request
 
-## Reporting Issues :speech_balloon:
+## Reporting Issues :warning: 
 
 Does something seem off? Make sure to [report it](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues).
+
+## Contact Us :speech_balloon:
+
+Visit the [Public Health Modelling Research Group](http://www.mrc-epid.cam.ac.uk/research/research-areas/public-health-modelling/) website to get in touch with our programme lead.
 
 ## License :open_file_folder:
 
