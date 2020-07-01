@@ -29,7 +29,7 @@ Here is a list of the items contained in this repository:
 
 - **[Mode-Share](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/tree/master/Mode-Share)**: folder containing statistical analyses assessing model's ability to characterize mode share
 
-## Project Management :heavy_check_mark:
+## Project Management
 
 This project uses GitHub issues for project management purposes. All ongoing tasks are kept track of and reviewed on a daily basis to ensure timely delivery of project milestones.
 
