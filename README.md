@@ -12,14 +12,14 @@ The objectives of this project are two-fold:
 1. Create, train, test and tune a deep learning model to achieve high sensitivity and specificity for counting vehicles in Google Street View images
 2. Use the model to count vehicles across several major cities in the World
 
-## Research Output :postbox:
+## Research Output
 
 So far, this project has potential for the following outputs:
 
 1. GSV vehicle counts ranking of 73 cities for motorcycling and cycling
 2. Detailed comparison: GSV vehicle counts versus control travel or census data for motorcycling and cycling in a small number of cities
 
-## Getting Started :rocket:
+## Getting Started
 
 Here is a list of the items contained in this repository:
 
@@ -33,7 +33,7 @@ Here is a list of the items contained in this repository:
 
 This project uses GitHub issues for project management purposes. All ongoing tasks are kept track of and reviewed on a daily basis to ensure timely delivery of project milestones.
 
-## Contributing :pencil:
+## Contributing
 
 Contributions are what make the open source community a great place to learn, inspire, and create. Any contributions you make are appreciated.
 
@@ -43,15 +43,15 @@ Contributions are what make the open source community a great place to learn, in
 4. Push to the Branch (`git push origin feature/AmazingContribution`)
 5. Open a Pull Request
 
-## Reporting Issues :warning: 
+## Reporting Issues
 
 Does something seem off? Make sure to [report it](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/issues).
 
-## Contact Us :speech_balloon:
+## Contact Us
 
 Visit the [Public Health Modelling Research Group](http://www.mrc-epid.cam.ac.uk/research/research-areas/public-health-modelling/) web page to get in touch with our programme lead.
 
-## License :open_file_folder:
+## License
 
 Distributed under the GNU Affero General Public License. See [LICENSE](https://github.com/Vehicle-detection-for-mode-share/Vehicle-Detection/blob/master/LICENSE) for more information.
 
