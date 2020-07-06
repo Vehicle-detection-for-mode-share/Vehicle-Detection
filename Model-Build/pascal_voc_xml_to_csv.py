@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul  6 14:32:10 2020
-
-@author: Kyriaki Kokka
-"""
-
-
 import os
 import glob
 import pandas as pd
