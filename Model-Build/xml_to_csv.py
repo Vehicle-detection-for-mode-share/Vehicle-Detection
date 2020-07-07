@@ -1,6 +1,4 @@
 # From Aakash Jadhav
-# Do the same whatever I am doing here!
-# Extrinsically Yours!
 
 import os
 import glob
@@ -30,9 +28,9 @@ def xml_to_csv(path):
 
 
 
-image_path = os.path.join(os.getcwd(), 'test')
+image_path = os.path.join(os.getcwd(), 'test')  # name the folder, ttain , val, test
 xml_df = xml_to_csv(image_path)
 xml_df.to_csv('test_labels.csv', index=None)
-print('Extrinsically converted xml to csv.!!!!! woh!!!')
-# Extrinsically Yours! 
+print('Converted xml to csv.!')
+
 
