@@ -28,9 +28,9 @@ def xml_to_csv(path):
 
 
 
-image_path = os.path.join(os.getcwd(), 'test')  # name the folder, ttain , val, test
+image_path = os.path.join(os.getcwd(), 'test')  # name the folder, train , val, test
 xml_df = xml_to_csv(image_path)
-xml_df.to_csv('test_labels.csv', index=None)
+xml_df.to_csv('test_labels.csv', index=None)   # change csv file name 
 print('Converted xml to csv.!')
 
 
