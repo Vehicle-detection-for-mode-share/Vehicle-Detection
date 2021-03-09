@@ -8,8 +8,13 @@ import os
 import sys
 
 
-source_path = 'C:/Users/Kyriaki Kokka/Desktop/'
+#source_path = 'C:/Users/Kyriaki Kokka/Desktop/'
+#dir_del = 'C:/Users/Kyriaki Kokka/Desktop/zip/'
 #source_path = '/rds/user/kk704/hpc-work/ElPaso/ElPaso_26701-26868_53225-53397/'
+
+source_path = '/rds/user/kk704/hpc-work/ElPaso/'
+dir_del =  '/rds/user/kk704/hpc-work/ElPaso/ElPaso_26701-26868_53225-53397/'
+
 
 # read in city csv file
 city = pd.read_csv(path.join(source_path, "ElPaso_final_locations.csv"))
@@ -47,7 +52,7 @@ for i in range(sample_size-1):
 
 #df.to_csv(path.join(source_path,'new_elpaso_2000sampled_folders.csv'), index=False)
 
-dir_del = 'C:/Users/Kyriaki Kokka/Desktop/zip/'
+
 delete = pd.read_csv(path.join(source_path, "Folders_to_delete_final.csv"))
 for i in delete["Folder"].tolist():
     os.remove(path.join(dir_del,i))
@@ -65,7 +70,6 @@ extr['rot3'] = extr.name.astype(str) + '_180_0.jpg'
 extr['rot4'] = extr.name.astype(str) + '_270_0.jpg'
 
 #Extract images in one folder
-#maybe create a file in ELpaso, so source path ends in ELPAso
 for folder in pd.unique(df2["Folder"]).tolist(): 
     archive = zipfile.ZipFile(path.join(source_path, folder))  
     for file in archive.namelist():
@@ -84,16 +88,13 @@ extr3 = extr.copy()
 extr3 = extr3.drop(["Folder","name"],axis = 1)
 extr3.lat = str(extr3.lat)
 extr3.lon = str(extr3.lon)
-
 files = sorted(extr3.iloc[:, -4:].values.T.ravel().tolist())
 
+#write full image path in txt
 with open('new_elpaso_8000sampled_images.txt',"w") as f:
     for item in files:
         f.write("%s\n" % item)
 
-source = path.join(source_path, "images/")
-destination = path.join(source_path, "sampled_images/")
-files = sorted(extr3.iloc[:, -4:].values.T.ravel().tolist())
-        
+#copy only the 8000 sampled images in "sampled_images" folder        
 for f in files:
     shutil.copy(path.join(path.join(source_path, "images/"), f), path.join(source_path, "sampled_images/"))         
