@@ -1,0 +1,351 @@
+---
+title: "Beta regression"
+author: "Kelly"
+date: "11/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(betareg)
+library(ggplot2)
+library("dplyr")
+
+dir_path <- "C://Users//Kyriaki Kokka//OneDrive - University of Cambridge//ComputerVision//Rdataset"
+df <- read.csv(paste0(dir_path, "/CVdataset.csv"),stringsAsFactors = FALSE,header = TRUE)
+#df <- df %>% mutate(id = row_number())
+```
+
+A1. Cycles
+
+```{r}
+all_data <- na.omit(df[,-c(4,5,6,9)])
+### Model 1:  cycle mode share (using beta regression)
+all_data$percentagecmode <- all_data$cmode * 0.01
+reg1 <- betareg(percentagecmode ~ log10(pedal) + log10(PopDensity_new), data = all_data)
+#reg1 <- betareg(percentagecmode ~ log10(pedal), data = all_data)
+summary(reg1)
+
+comparison <- matrix(nrow = 52,ncol = 2)
+for ( i in 1:52)
+{
+  reg1 <- betareg(percentagecmode ~ log10(pedal) + log10(PopDensity_new),data = all_data[-i,])
+  #reg1 <- betareg(percentagecmode ~ log10(pedal) ,data = all_data[-i,])
+  comparison[i,1] <- predict(reg1, all_data[i,])
+  comparison[i,2] <- all_data$percentagecmode[i]
+}
+#plot(comparison[,2], comparison[,1])
+```
+
+```{r}
+sum((comparison[,1]-comparison[,2])^2) ## PRESS
+sqrt(mean((comparison[,1]-comparison[,2])^2))# RMSE
+mean(abs(comparison[,1]-comparison[,2]))  ## mean absolute error
+median(abs(comparison[,1]-comparison[,2]))
+```
+
+
+```{r}
+### RMSE caclulation
+#sqrt(mean((comparison[,1]-comparison[,2])^2))/(max(comparison[,2])-min(comparison[,2])) # normalisedRMSE
+#sqrt(mean((comparison[,1]-comparison[,2])^2, na.rm=T))/(mean(comparison[,2], na.rm=T)) # normalisedRMSE
+plot(comparison[,2], comparison[,1] , xlim = c(0, 0.35), ylim = c(0, 0.35), xlab = "observed", ylab = "predicted")
+abline(0,1)
+a <- comparison
+```
+
+
+```{r echo=FALSE}
+#1-(sum((comparison[,1]-comparison[,2])^2)/sum((comparison[,2]-mean(comparison[,2]))^2))
+
+### new beta regression residual method####
+options(digits = 4)
+datapoints <- dim(all_data)[1]
+loocv_residuals <- c()
+for(i in 1:datapoints){
+  weights <- rep(1,datapoints)
+  weights[i] <- 0
+  #gy <- betareg(percentagecmode ~ log10(pedal), data = all_data, weights = weights)
+  gy <- betareg(percentagecmode ~ log10(pedal) + log10(PopDensity_new), data = all_data, weights = weights)
+  gy$weights <- rep(1,datapoints)
+  loocv_residuals[i] <- residuals(gy, type = "sweighted2")[i]
+}
+median(abs(loocv_residuals))
+mean(abs(loocv_residuals))
+#################
+
+```
+
+A2. Cycle mode share < 12
+
+```{r echo=FALSE}
+all_data <- na.omit(df[,-c(4,5,6,9)])
+data <- all_data[all_data$cmode < 12,]
+### Model 2: motor mode share (using beta regression)
+data$percentagecmode <- data$cmode * 0.01
+reg1 <- betareg(percentagecmode ~ log10(pedal) + log10(PopDensity_new), data = data)
+summary(reg1)
+
+comparison<-matrix(nrow = 46,ncol = 2)
+for ( i in 1:46)
+{
+  reg1 <- betareg(percentagecmode ~ log10(pedal) + log10(PopDensity_new), data = data[-i,])
+  comparison[i,1] <- predict(reg1, data[i,])
+  comparison[i,2] <- data$percentagecmode[i]
+}
+
+
+#plot(comparison[,2], comparison[,1])
+sum((comparison[,1]-comparison[,2])^2) ## PRESS
+sqrt(mean((comparison[,1]-comparison[,2])^2))# RMSE
+mean(abs(comparison[,1]-comparison[,2]))  ## mean absolute error
+median(abs(comparison[,1]-comparison[,2]))
+
+plot(comparison[,2], comparison[,1] , xlim = c(0, 0.05), ylim = c(0, 0.05), xlab = "observed", ylab = "predicted")
+abline(0,1)
+
+options(digits = 4)
+datapoints <- dim(data)[1]
+loocv_residuals <- c()
+for(i in 1:datapoints){
+  weights <- rep(1,datapoints)
+  weights[i] <- 0
+  gy <- betareg(percentagecmode ~ log10(pedal) + log10(PopDensity_new), data = data, weights = weights)
+  gy$weights <- rep(1,datapoints)
+  loocv_residuals[i] <- residuals(gy, type = "sweighted2")[i]
+}
+median(abs(loocv_residuals))
+mean(abs(loocv_residuals))
+
+```
+
+
+
+
+
+##B1. Motors
+
+```{r echo=FALSE}
+all_data <- na.omit(df[,-c(3,5,6,8)])
+
+### Model 2: motor mode share (using beta regression)
+all_data$percentagemmode <- all_data$mmode * 0.01
+#reg1 <- betareg(percentagemmode ~ log10(motor) + log10(PopDensity_new), data = all_data)
+reg1 <- betareg(percentagemmode ~ log10(motor), data = all_data)
+summary(reg1)
+
+comparison<-matrix(nrow = 45,ncol = 2)
+for ( i in 1:45)
+{
+  reg1 <- betareg(percentagemmode ~ log10(motor) + log10(PopDensity_new),data = all_data[-i,])
+  #reg1 <- betareg(percentagemmode ~ log10(motor),data = all_data[-i,])
+  comparison[i,1] <- predict(reg1, all_data[i,])
+  comparison[i,2] <- all_data$percentagemmode[i]
+}
+```
+
+
+```{r}
+#plot(comparison[,2], comparison[,1])
+sum((comparison[,1]-comparison[,2])^2) ## PRESS
+sqrt(mean((comparison[,1]-comparison[,2])^2))# RMSE
+mean(abs(comparison[,1]-comparison[,2]))  ## mean absolute error
+median(abs(comparison[,1]-comparison[,2]))
+
+```
+
+
+```{r}
+### RMSE caclulation
+#sqrt(mean((comparison[,1]-comparison[,2])^2))/(max(comparison[,2])-min(comparison[,2])) # normalisedRMSE
+#sqrt(mean((comparison[,1]-comparison[,2])^2, na.rm=T))/(mean(comparison[,2], na.rm=T)) # normalisedRMSE
+plot(comparison[,2], comparison[,1] , xlim = c(0, 0.35), ylim = c(0, 0.35), xlab = "observed", ylab = "predicted")
+abline(0,1)
+a2 <- comparison
+```
+
+
+```{r echo=FALSE}
+#1-(sum((comparison[,1]-comparison[,2])^2)/sum((comparison[,2]-mean(comparison[,2]))^2))
+
+### new beta regression residual method####
+options(digits = 4)
+datapoints <- dim(all_data)[1]
+loocv_residuals <- c()
+for(i in 1:datapoints){
+  weights <- rep(1,datapoints)
+  weights[i] <- 0
+  gy <- betareg(percentagemmode ~ log10(motor) + log10(PopDensity_new), data = all_data, weights = weights)
+  #gy <- betareg(percentagemmode ~ log10(motor), data = all_data,weights=weights)
+  gy$weights <- rep(1,datapoints)
+  loocv_residuals[i] <- residuals(gy, type = "sweighted2")[i]
+}
+median(abs(loocv_residuals))
+mean(abs(loocv_residuals))
+#################
+
+```
+
+## B2. Motors with mode share < 4
+
+
+
+```{r echo=FALSE}
+all_data <- na.omit(df[,-c(3,5,6,8)])
+data <- all_data[all_data$mmode < 4,]
+### Model 2: motor mode share (using beta regression)
+data$percentagemmode <- data$mmode * 0.01
+reg1 <- betareg(percentagemmode ~ log10(motor) + log10(PopDensity_new), data = data)
+#reg1 <- betareg(percentagemmode ~ log10(motor), data = data)
+summary(reg1)
+
+comparison<-matrix(nrow = 38,ncol = 2)
+for ( i in 1:38)
+{
+  reg1 <- betareg(percentagemmode ~ log10(motor) + log10(PopDensity_new), data = data[-i,])
+  #reg1 <- betareg(percentagemmode ~ log10(motor),data = data[-i,])
+  comparison[i,1] <- predict(reg1, data[i,])
+  comparison[i,2] <- data$percentagemmode[i]
+}
+
+
+#plot(comparison[,2], comparison[,1])
+sum((comparison[,1]-comparison[,2])^2) ## PRESS
+sqrt(mean((comparison[,1]-comparison[,2])^2))# RMSE
+mean(abs(comparison[,1]-comparison[,2]))  ## mean absolute error
+median(abs(comparison[,1]-comparison[,2]))
+```
+
+
+```{r}
+plot(comparison[,2], comparison[,1] , xlim = c(0, 0.05), ylim = c(0, 0.05), xlab = "observed", ylab = "predicted")
+abline(0,1)
+
+options(digits = 4)
+datapoints <- dim(data)[1]
+loocv_residuals <- c()
+for(i in 1:datapoints){
+  weights <- rep(1,datapoints)
+  weights[i] <- 0
+  gy <- betareg(percentagemmode ~ log10(motor) + log10(PopDensity_new), data = data, weights = weights)
+  #gy <- betareg(percentagemmode ~ log10(motor), data = all_data, weights = weights)
+  gy$weights <- rep(1,datapoints)
+  loocv_residuals[i] <- residuals(gy, type = "sweighted2")[i]
+}
+median(abs(loocv_residuals))
+mean(abs(loocv_residuals))
+
+```
+
+
+
+```{r echo=FALSE}
+
+#m<-plot_grid(p2,p3, ncol=2, nrow=2)
+#save_plot("models1-4.tiff",m ,ncol = 2, nrow = 2,base_height = 4,base_aspect_ratio = 1.15) # make room for figure legend)
+#ggsave(paste0('V:/Group/GSV/Paper', 'filename', ".png"), height=5, width=10, units='in', dpi=600, scale = 1)
+
+```
+
+
+
+
+```{r echo=FALSE}
+
+library(readxl)
+#library('dplyr')
+#library('tidyverse')
+
+#dir_path <- "C://Users//Kyriaki Kokka//Desktop"
+dir_path <- "C://Users//Kyriaki Kokka//OneDrive - University of Cambridge//ComputerVision//Rdataset"
+df <- read_excel(paste0(dir_path, "/motors.xlsx"))
+
+p1 <- ggplot(data = df, aes(x = mmode, y = logbeta, label = city ))+
+  geom_text(vjust = 1,size = 2.5)+
+  geom_abline(slope = 1, intercept = 0, size = 1) +
+  geom_point(shape=21, fill = "blue",size = 1.5)+
+  scale_x_continuous(breaks = seq(0,33,by = 2),limits = c(0,33), expand = c(0.01,0.01))+
+  scale_y_continuous(breaks = seq(0,33,by = 2),expand = c(0.001,0.001),limits = c(0,33))+
+  xlab("Observed")+
+  ylab("Predicted")+
+  labs(title = "(a) log Beta Regression - motors", size = 12)+
+  theme_bw(base_size = 12)+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+           panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.text.x = element_text(colour = "black",size = 10))+
+  theme(axis.text.y = element_text(colour = "black",size = 10))+
+  theme(axis.title.x = element_text(size = 10))+
+  theme(axis.title.y = element_text(size = 10))
+#p<-p+ annotate(label="MAE= 0.04", geom= "text", x=0.3, y=0.4, size=5)
+p1
+#ggsave(filename = "motors.jpg", plot = p1)
+
+#zoom in
+p2 <- ggplot(data = df, aes(x = mmode, y = logbeta, label = city ))+
+  geom_text(vjust = 1,size = 2.5)+
+  geom_abline(slope = 1, intercept = 0, size = 1) +
+  geom_point(shape=21, fill = "blue",size = 1.5)+
+  scale_x_continuous(breaks = seq(0,3,by = 0.1),limits = c(0,2), expand = c(0.01,0.01))+
+  scale_y_continuous(breaks = seq(0,3,by = 0.1),expand = c(0.01,0.01),limits = c(0,2))+
+  xlab("Observed")+
+  ylab("Predicted")+
+  labs(title = "(b) log Beta Regression - motors: zoom in", size = 12)+
+  theme_bw(base_size = 12)+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.text.x = element_text(colour = "black",size = 10))+
+  theme(axis.text.y = element_text(colour = "black",size = 10))+
+  theme(axis.title.x = element_text(size = 10))+
+  theme(axis.title.y = element_text(size = 10))
+p2
+
+#ggsave(filename = "motors_zoom.jpg", plot = p2)
+
+#cycles
+df <- read_excel(paste0(dir_path, "/cycles.xlsx"))
+
+p3 <- ggplot(data = df, aes(x = cmode, y = logbeta, label = city ))+
+  geom_text(vjust = 1,size = 2.5)+
+  geom_abline(slope = 1, intercept = 0, size = 1) +
+  geom_point(shape=21, fill = "blue",size = 1.5)+
+  scale_x_continuous(breaks = seq(0,34,by = 2),limits = c(0,34), expand = c(0.01,0.01))+
+  scale_y_continuous(breaks = seq(0,34,by = 2),expand = c(0.01,0.01),limits = c(0,34))+
+  xlab("Observed")+
+  ylab("Predicted")+
+  labs(title = "(c) log Beta Regression - cycles", size = 12)+
+  theme_bw(base_size = 12)+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.text.x = element_text(colour = "black",size = 10))+
+  theme(axis.text.y = element_text(colour = "black",size = 10))+
+  theme(axis.title.x = element_text(size = 10))+
+  theme(axis.title.y = element_text(size = 10))
+p3
+
+
+#ggsave(filename = "cycles.jpg", plot = p3)
+
+p4 <- ggplot(data = df, aes(x = cmode, y = logbeta, label = city ))+
+  geom_text(vjust = 1,size = 2.5)+
+  geom_abline(slope = 1, intercept = 0, size = 1) +
+  geom_point(shape=21, fill = "blue",size = 1.5)+
+  scale_x_continuous(breaks = seq(0,5,by = 1),limits = c(0,5), expand = c(0.01,0.01))+
+  scale_y_continuous(breaks = seq(0,5,by = 1),expand = c(0.01,0.01),limits = c(0,5))+
+  xlab("Observed")+
+  ylab("Predicted")+
+  labs(title = "(d) log Beta Regression - cycles: zoom in", size = 12)+
+  theme_bw(base_size = 12)+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.text.x = element_text(colour = "black",size = 10))+
+  theme(axis.text.y = element_text(colour = "black",size = 10))+
+  theme(axis.title.x = element_text(size = 10))+
+  theme(axis.title.y = element_text(size = 10))
+p4
+
+
+#ggsave(filename = "cycles_zoom.jpg", plot = p4)
+
+```
+
+
+
