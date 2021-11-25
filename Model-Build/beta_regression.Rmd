@@ -5,7 +5,7 @@ date: "11/22/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r}
 library(betareg)
 library(ggplot2)
 library("dplyr")
@@ -15,7 +15,7 @@ df <- read.csv(paste0(dir_path, "/CVdataset.csv"),stringsAsFactors = FALSE,heade
 #df <- df %>% mutate(id = row_number())
 ```
 
-A1. Cycles
+## A1. Cycles
 
 ```{r}
 all_data <- na.omit(df[,-c(4,5,6,9)])
@@ -54,7 +54,7 @@ a <- comparison
 ```
 
 
-```{r echo=FALSE}
+```{r}
 #1-(sum((comparison[,1]-comparison[,2])^2)/sum((comparison[,2]-mean(comparison[,2]))^2))
 
 ### new beta regression residual method####
@@ -75,9 +75,9 @@ mean(abs(loocv_residuals))
 
 ```
 
-A2. Cycle mode share < 12
+## A2. Cycle mode share < 12
 
-```{r echo=FALSE}
+```{r}
 all_data <- na.omit(df[,-c(4,5,6,9)])
 data <- all_data[all_data$cmode < 12,]
 ### Model 2: motor mode share (using beta regression)
@@ -119,12 +119,9 @@ mean(abs(loocv_residuals))
 ```
 
 
+## B1. Motors
 
-
-
-##B1. Motors
-
-```{r echo=FALSE}
+```{r}
 all_data <- na.omit(df[,-c(3,5,6,8)])
 
 ### Model 2: motor mode share (using beta regression)
@@ -164,7 +161,7 @@ a2 <- comparison
 ```
 
 
-```{r echo=FALSE}
+```{r}
 #1-(sum((comparison[,1]-comparison[,2])^2)/sum((comparison[,2]-mean(comparison[,2]))^2))
 
 ### new beta regression residual method####
@@ -189,7 +186,7 @@ mean(abs(loocv_residuals))
 
 
 
-```{r echo=FALSE}
+```{r}
 all_data <- na.omit(df[,-c(3,5,6,8)])
 data <- all_data[all_data$mmode < 4,]
 ### Model 2: motor mode share (using beta regression)
@@ -249,7 +246,7 @@ mean(abs(loocv_residuals))
 
 
 
-```{r echo=FALSE}
+```{r}
 
 library(readxl)
 #library('dplyr')
